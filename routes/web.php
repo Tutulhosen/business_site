@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\backend\backendController;
+use App\Http\Controllers\frontend\frontendController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[frontendController::class, 'index'])->name('frontend.index');
 
-Route::get('admin', [LoginController::class, 'login'])->name('admin.login');
-Route::post('admin-login', [LoginController::class, 'loggedIn'])->name('admin.loggedin');
+Route::get('/admin',[backendController::class, 'index'])->name('backend.index');
+
+
